@@ -1,13 +1,13 @@
 <instance format="XCSP3" type="CSP">
   <variables>
-    <var id="Guillaume"> 1 2 3 </var>
-    <var id="Maxime"> 1 2 3 </var>
-    <var id="Alban"> 1 2 3 </var>
-    <var id="Roger"> 1 2 3 </var>
-    <var id="Manu"> 1 2 3 </var>
-    <var id="Vegeta"> 1 2 3 </var>
-    <var id="Morgane"> 1 2 3 </var>
-    <var id="Clara"> 1 2 3 </var>
+    <var id="Guillaume"> 0 1 2 </var>
+    <var id="Maxime"> 0 1 2 </var>
+    <var id="Alban"> 0 1 2 </var>
+    <var id="Roger"> 0 1 2 </var>
+    <var id="Manu"> 0 1 2 </var>
+    <var id="Vegeta"> 0 1 2 </var>
+    <var id="Morgane"> 0 1 2 </var>
+    <var id="Clara"> 0 1 2 </var>
   </variables>
   <constraints>
     <block note="Taille max par options">
@@ -17,14 +17,18 @@
           <values> %0 </values>
           <condition> (le,4) </condition>
         </count>
+        <args> 0 </args>
         <args> 1 </args>
-        <args> 2 </args>
       </group>
       <count>
         <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
-        <values> 3 </values>
+        <values> 2 </values>
         <condition> (le,2) </condition>
       </count>
     </block>
+    <instantiation>
+      <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
+      <values> 0 2 2 2 1 0 1 0 </values>
+    </instantiation>
   </constraints>
 </instance>
