@@ -1,12 +1,17 @@
 from pycsp3 import *
 
-nNodes, edges = data
-nColors = 4
-# x[i] is the color assigned to the ith node of the graph
-x = VarArray(size=nNodes, dom=range(0,nColors))
+# letters[i] is the digit of the ith letter involved in the equation
+s, e, n, d, m, o, r, y = letters = VarArray(size=8, dom=range(10))
 
 satisfy(
-    # two adjacent nodes must be colored differently
-    x[i] != x[j] for (i, j) in edges
-)
+    # letters are given different values
+    AllDifferent(letters),
 
+    # words cannot start with 0
+    [s > 0, m > 0],
+
+    # respecting the mathematical equation
+    [s, e, n, d] * [1000, 100, 10, 1]
+    + [m, o, r, e] * [1000, 100, 10, 1]
+    == [m, o, n, e, y] * [10000, 1000, 100, 10, 1]
+)
