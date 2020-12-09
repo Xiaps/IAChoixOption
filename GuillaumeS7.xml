@@ -5,30 +5,28 @@
     <var id="Alban"> 0 1 2 </var>
     <var id="Roger"> 0 1 2 </var>
     <var id="Manu"> 0 1 2 </var>
-    <var id="Vegeta"> 0 1 2 </var>
     <var id="Morgane"> 0 1 2 </var>
+    <var id="Vegeta"> 0 1 2 </var>
     <var id="Clara"> 0 1 2 </var>
   </variables>
   <constraints>
-    <block note="Taille max par options">
-      <group>
-        <count>
-          <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
-          <values> %0 </values>
-          <condition> (le,4) </condition>
-        </count>
-        <args> 0 </args>
-        <args> 1 </args>
-      </group>
+    <group>
       <count>
-        <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
-        <values> 2 </values>
-        <condition> (le,2) </condition>
+        <list> Guillaume Maxime Alban Roger Manu Morgane Vegeta Clara </list>
+        <values> %0 </values>
+        <condition> (le,4) </condition>
       </count>
-    </block>
+      <args> 0 </args>
+      <args> 1 </args>
+    </group>
+    <count>
+      <list> Guillaume Maxime Alban Roger Manu Morgane Vegeta Clara </list>
+      <values> 2 </values>
+      <condition> (le,2) </condition>
+    </count>
     <instantiation>
-      <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
-      <values> 0 2 2 2 1 0 1 0 </values>
+      <list> Guillaume Maxime Alban Roger Manu Morgane Vegeta Clara </list>
+      <values> 2 2 2 2 1 0 1 0 </values>
     </instantiation>
   </constraints>
 </instance>
