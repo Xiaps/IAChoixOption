@@ -1,6 +1,6 @@
 from pycsp3 import *
 
-options = ["LD", "SE", "BIO"]
+options = LD, SE, BIO = 1, 2, 3
 optionsPlaces = [4, 4, 2]
 Guillaume, Maxime, Alban, Roger, Manu, Vegeta, Morgane, Clara = eleves = VarArray(size=8, dom=options)
 
@@ -17,13 +17,15 @@ for y in range(len(options)):
         moyenne = 0
         for x in range(len(elevesNotes[0])):
             moyenne += elevesNotes[i][x] * coefsOptions[y][x]
-        moyenne = round(moyenne / sum(coefsOptions[y]),2)
+        moyenne = round(moyenne / sum(coefsOptions[y]), 2)
         elevesMoyenneOptions[i].append(moyenne)
 
-print(elevesMoyenneOptions)
 
 satisfy(
-    # words cannot start with 0
-    (eleves.count(options[i]) <= optionsPlaces[i] for i in range(len(optionsPlaces)))
+    # Taille max par options
+    [Count(eleves, value=options[i]) <= optionsPlaces[i] for i in range(len(options))],
+
+
+
 
 )

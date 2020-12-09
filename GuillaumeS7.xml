@@ -1,12 +1,30 @@
 <instance format="XCSP3" type="CSP">
   <variables>
-    <var id="Guillaume" type="symbolic"> BIO LD SE </var>
-    <var id="Maxime" type="symbolic"> BIO LD SE </var>
-    <var id="Alban" type="symbolic"> BIO LD SE </var>
-    <var id="Roger" type="symbolic"> BIO LD SE </var>
-    <var id="Manu" type="symbolic"> BIO LD SE </var>
-    <var id="Vegeta" type="symbolic"> BIO LD SE </var>
-    <var id="Morgane" type="symbolic"> BIO LD SE </var>
-    <var id="Clara" type="symbolic"> BIO LD SE </var>
+    <var id="Guillaume"> 1 2 3 </var>
+    <var id="Maxime"> 1 2 3 </var>
+    <var id="Alban"> 1 2 3 </var>
+    <var id="Roger"> 1 2 3 </var>
+    <var id="Manu"> 1 2 3 </var>
+    <var id="Vegeta"> 1 2 3 </var>
+    <var id="Morgane"> 1 2 3 </var>
+    <var id="Clara"> 1 2 3 </var>
   </variables>
+  <constraints>
+    <block note="Taille max par options">
+      <group>
+        <count>
+          <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
+          <values> %0 </values>
+          <condition> (le,4) </condition>
+        </count>
+        <args> 1 </args>
+        <args> 2 </args>
+      </group>
+      <count>
+        <list> Guillaume Maxime Alban Roger Manu Vegeta Morgane Clara </list>
+        <values> 3 </values>
+        <condition> (le,2) </condition>
+      </count>
+    </block>
+  </constraints>
 </instance>
