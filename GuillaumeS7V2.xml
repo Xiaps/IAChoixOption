@@ -8,7 +8,7 @@
     <var id="Morgane"> 0 1 2 </var>
     <var id="Vegeta"> 0 1 2 </var>
     <var id="Clara"> 0 1 2 </var>
-    <array id="varChoixObtenu" size="[8]"> 0..2 </array>
+    <array id="choix" size="[8]"> 0..2 </array>
   </variables>
   <constraints>
     <group>
@@ -26,11 +26,11 @@
       <condition> (le,2) </condition>
     </count>
     <instantiation>
-      <list> varChoixObtenu[] </list>
+      <list> choix[] </list>
       <values> 0 0 0 0 0 0 0 0 </values>
     </instantiation>
   </constraints>
   <objectives>
-    <minimize type="sum"> varChoixObtenu[] </minimize>
+    <minimize note="Sum(elevesChoix[i].index(eleves[i]) for i in range(len(eleves))) - Sum(i for i in range(len(eleves)))" type="sum"> choix[] </minimize>
   </objectives>
 </instance>
