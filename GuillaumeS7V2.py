@@ -15,6 +15,9 @@ choixV = VarArray(size=8, dom=range(3))
 #var moyenne
 moyenneV = VarArray(size=8, dom=range(20))
 
+#score pour optimisation
+score = Var(dom=range(10000))
+
 # Set de choix pour chaque eleve, l'option 1ere est indiqué par 0,n la deuxieme par 1 etc etc...
 elevesChoix = [[2, 1, 0], [0, 1, 2], [0, 1, 2], [1, 2, 0], [1, 2, 0], [0, 2, 1], [1, 0, 2], [1, 0, 2]]
 
@@ -36,15 +39,17 @@ for y in range(len(options)):
         moyenne = round(moyenne / sum(coefsOptions[y]), 2)
         elevesMoyenneOptions[i].append(round(moyenne))
 
+coefChoix = 1
+coefMoyenne = 1
+
 satisfy(
     [Sum(elevesV[x][i] for x in range(8)) <= optionsPlaces[i] for i in range(len(options))],
     [choixV[i]==Sum(elevesV[i]*elevesChoix[i]) for i in range(8)],
     [Sum(elevesV[i])==1 for i in range(8)],
     [moyenneV[i]==Sum(elevesV[i]*elevesMoyenneOptions[i]) for i in range(8)],
+    score==Sum(choixV)*coefChoix+Sum(moyenneV)*coefMoyenne
 )
 
-minimize(Sum(choixV))
-
 maximize(
-    Sum(moyenneV)
+    score
 )
