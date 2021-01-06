@@ -39,7 +39,9 @@ for y in range(len(options)):
         moyenne = round(moyenne / sum(coefsOptions[y]), 2)
         elevesMoyenneOptions[i].append(round(moyenne))
 
-coefChoix = 1
+#Le coef du choix doit etre negatif
+coefChoix = -5
+#Le coef du choix doit etre positif
 coefMoyenne = 1
 
 satisfy(
@@ -47,7 +49,7 @@ satisfy(
     [choixV[i]==Sum(elevesV[i]*elevesChoix[i]) for i in range(8)],
     [Sum(elevesV[i])==1 for i in range(8)],
     [moyenneV[i]==Sum(elevesV[i]*elevesMoyenneOptions[i]) for i in range(8)],
-    score==Sum(choixV)*coefChoix+Sum(moyenneV)*coefMoyenne
+    score==(Sum(choixV))*coefChoix+Sum(moyenneV)*coefMoyenne
 )
 
 maximize(
