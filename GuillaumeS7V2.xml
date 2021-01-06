@@ -1,36 +1,120 @@
 <instance format="XCSP3" type="COP">
   <variables>
-    <var id="Guillaume"> 0 1 2 </var>
-    <var id="Maxime"> 0 1 2 </var>
-    <var id="Alban"> 0 1 2 </var>
-    <var id="Roger"> 0 1 2 </var>
-    <var id="Manu"> 0 1 2 </var>
-    <var id="Morgane"> 0 1 2 </var>
-    <var id="Vegeta"> 0 1 2 </var>
-    <var id="Clara"> 0 1 2 </var>
-    <array id="choix" size="[8]"> 0..2 </array>
+    <array id="elevesV" note="Les eleves" size="[8][3]"> 0 1 </array>
+    <array id="choixV" note="Var choix" size="[8]"> 0..2 </array>
+    <array id="moyenneV" note="var moyenne" size="[8]"> 0..19 </array>
+    <var id="score" note="score pour optimisation"> 0..9999 </var>
   </variables>
   <constraints>
     <group>
-      <count>
-        <list> Guillaume Maxime Alban Roger Manu Morgane Vegeta Clara </list>
-        <values> %0 </values>
+      <sum>
+        <list> %... </list>
         <condition> (le,4) </condition>
-      </count>
-      <args> 0 </args>
-      <args> 1 </args>
+      </sum>
+      <args> elevesV[][0] </args>
+      <args> elevesV[][1] </args>
     </group>
-    <count>
-      <list> Guillaume Maxime Alban Roger Manu Morgane Vegeta Clara </list>
-      <values> 2 </values>
+    <sum>
+      <list> elevesV[][2] </list>
       <condition> (le,2) </condition>
-    </count>
-    <instantiation>
-      <list> choix[] </list>
-      <values> 0 0 0 0 0 0 0 0 </values>
-    </instantiation>
+    </sum>
+    <sum>
+      <list> elevesV[0][] </list>
+      <coeffs> 2 1 0 </coeffs>
+      <condition> (eq,choixV[0]) </condition>
+    </sum>
+    <group>
+      <sum>
+        <list> %0 %1 %2 </list>
+        <coeffs> 0 1 2 </coeffs>
+        <condition> (eq,%3) </condition>
+      </sum>
+      <args> elevesV[1][] choixV[1] </args>
+      <args> elevesV[2][] choixV[2] </args>
+    </group>
+    <group>
+      <sum>
+        <list> %0 %1 %2 </list>
+        <coeffs> 1 2 0 </coeffs>
+        <condition> (eq,%3) </condition>
+      </sum>
+      <args> elevesV[3][] choixV[3] </args>
+      <args> elevesV[4][] choixV[4] </args>
+    </group>
+    <sum>
+      <list> elevesV[5][] </list>
+      <coeffs> 0 2 1 </coeffs>
+      <condition> (eq,choixV[5]) </condition>
+    </sum>
+    <group>
+      <sum>
+        <list> %0 %1 %2 </list>
+        <coeffs> 1 0 2 </coeffs>
+        <condition> (eq,%3) </condition>
+      </sum>
+      <args> elevesV[6][] choixV[6] </args>
+      <args> elevesV[7][] choixV[7] </args>
+    </group>
+    <group>
+      <sum>
+        <list> %0 %1 %2 </list>
+        <condition> (eq,1) </condition>
+      </sum>
+      <args> elevesV[0][] </args>
+      <args> elevesV[1][] </args>
+      <args> elevesV[2][] </args>
+      <args> elevesV[3][] </args>
+      <args> elevesV[4][] </args>
+      <args> elevesV[5][] </args>
+      <args> elevesV[6][] </args>
+      <args> elevesV[7][] </args>
+    </group>
+    <sum>
+      <list> elevesV[0][] </list>
+      <coeffs> 15 15 15 </coeffs>
+      <condition> (eq,moyenneV[0]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[1][] </list>
+      <coeffs> 14 15 16 </coeffs>
+      <condition> (eq,moyenneV[1]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[2][] </list>
+      <coeffs> 15 12 8 </coeffs>
+      <condition> (eq,moyenneV[2]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[3][] </list>
+      <coeffs> 12 12 13 </coeffs>
+      <condition> (eq,moyenneV[3]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[4][] </list>
+      <coeffs> 9 8 8 </coeffs>
+      <condition> (eq,moyenneV[4]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[5][] </list>
+      <coeffs> 17 18 18 </coeffs>
+      <condition> (eq,moyenneV[5]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[6][] </list>
+      <coeffs> 10 12 16 </coeffs>
+      <condition> (eq,moyenneV[6]) </condition>
+    </sum>
+    <sum>
+      <list> elevesV[7][] </list>
+      <coeffs> 14 14 12 </coeffs>
+      <condition> (eq,moyenneV[7]) </condition>
+    </sum>
+    <sum>
+      <list> choixV[] moyenneV[] </list>
+      <condition> (eq,score) </condition>
+    </sum>
   </constraints>
   <objectives>
-    <minimize note="Sum(elevesChoix[i].index(eleves[i]) for i in range(len(eleves))) - Sum(i for i in range(len(eleves)))" type="sum"> choix[] </minimize>
+    <maximize> score </maximize>
   </objectives>
 </instance>

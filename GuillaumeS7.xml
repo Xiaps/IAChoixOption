@@ -1,4 +1,4 @@
-<instance format="XCSP3" type="COP">
+<instance format="XCSP3" type="CSP">
   <variables>
     <var id="Guillaume"> 0 1 2 </var>
     <var id="Maxime"> 0 1 2 </var>
