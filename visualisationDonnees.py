@@ -4,16 +4,26 @@ import numpy as np;
 import pandas as pd;
 import matplotlib.pyplot as plt
 
-options =["LD","SE","BIO", "CSS"]
-eleve = ["Guillaume", "Maxime", "Alban", "Roger", "Manu", "Morgane", "Vegeta", "Clara"]
+
+options =["LD","SE","BIO","CSS","EOC","NRJ"]
+
+data = pd.read_csv('testdata.csv', delimiter=";")
+donnees=data.values
+
+nbEleve = len(donnees)
+eleves =[]
+
+#Ajout des eleves
+for i in range(nbEleve):
+    eleves.append(donnees[i][0])
+
 rawData = input();
 
 data = rawData.split(" ");
-nombreEleve = len(eleve);
 nombreOptions = len(options)
-optionChoisi=data[:nombreEleve*nombreOptions]
-choixObtenu=data[nombreEleve*nombreOptions:nombreEleve*nombreOptions+8]
-notesOptions=data[nombreEleve*nombreOptions+8:nombreEleve*nombreOptions+16]
+optionChoisi=data[:nbEleve*nombreOptions]
+choixObtenu=data[nbEleve*nombreOptions:nbEleve*nombreOptions+nbEleve]
+notesOptions=data[nbEleve*nombreOptions+nbEleve:nbEleve*nombreOptions+(nbEleve*2)]
 
 nbEleveParOption=[]
 for i in range(nombreOptions):
@@ -32,10 +42,11 @@ def convertChoix(choix):
         return "Quatrieme choix"
     else : return "choix trop loin"
 
-for i in range(round(nombreEleve)):
-    resultat[0].append(eleve[i]);
+for i in range(round(nbEleve)):
+    resultat[0].append(eleves[i]);
     resultat[2].append(convertChoix(choixObtenu[i]))
-    resultat[3].append("Moyenne dans l'option : " +notesOptions[i])
+    resultat[3].append(notesOptions[i])
+    #"Moyenne dans l'option : " +
     for j in range(nombreOptions):
         if(data[i*nombreOptions+j]== "1"):
             resultat[1].append(options[j])
@@ -64,7 +75,6 @@ for i in range(len(choixObtenu)):
     elif choixObtenu[i]=="2":
         nbTroisiemeChoix+=1
 
-print(nbPremierChoix)
 x = [nbPremierChoix,nbDeuxiemeChoix,nbTroisiemeChoix]
 plt.title("Proportion d'élève ayant eu leur premier choix")
 plt.pie(x, labels = ['Premier choix', 'Deuxième choix', 'Troisième choix'], normalize = True)
