@@ -49,8 +49,8 @@ for i in range(nbEleve):
 options = LD, SE, BIO, CSS, EOC, NRJ = 0, 1, 2, 3, 4, 5
 nbOptions = len(options)
 
-# Les places de optionss
-optionsPlaces = [50, 50, 50, 50, 50, 50]
+# Les places de options
+optionsPlaces = [18, 18, 12, 12, 18, 12]
 
 # Les eleves
 elevesV = VarArray(size=[nbEleve,nbOptions], dom={0, 1})

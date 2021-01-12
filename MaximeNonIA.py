@@ -4,7 +4,7 @@ import pandas as pd
 options = LD, SE, BIO, CSS, EOC, NRJ = 0, 1, 2, 3, 4, 5
 nbOptions = len(options)
 
-data = pd.read_csv('testdata.csv', delimiter=";")
+data = pd.read_csv('testdata80.csv', delimiter=";")
 donnees=data.values
 
 nbEleves = len(donnees)
@@ -49,7 +49,7 @@ for i in range(nbEleves):
 
 
 #Les places de optionss
-optionsPlaces = [50, 50, 50, 50, 50, 50]
+optionsPlaces = [18, 18, 12, 12, 18, 12]
 
 #Set de coefs des notes pour chaque option
 coefsOptions = [[1, 2], [1, 2], [2, 1], [1, 2], [2,1], [2,1]]
@@ -95,17 +95,17 @@ for op in range(len(options)) :
             if optionsRemplis[op][j][1][op] < optionsRemplis[op][j+1][1][op] :
                 optionsRemplis[op][j], optionsRemplis[op][j + 1] = optionsRemplis[op][j + 1], optionsRemplis[op][j]
 
-print("=====LD======")
+print("=====LD======"+str(len(optionsRemplis[0]))+" élèves")
 print(optionsRemplis[0])
-print("=====SE======")
+print("=====SE======"+str(len(optionsRemplis[1]))+" élèves")
 print(optionsRemplis[1])
-print("=====BIO======")
+print("=====BIO======"+str(len(optionsRemplis[2]))+" élèves")
 print(optionsRemplis[2])
-print("=====CSS======")
+print("=====CSS======"+str(len(optionsRemplis[3]))+" élèves")
 print(optionsRemplis[3])
-print("=====EOC======")
+print("=====EOC======"+str(len(optionsRemplis[4]))+" élèves")
 print(optionsRemplis[4])
-print("=====NRJ======")
+print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
 #On coupe :
 for i in range(len(optionsRemplis)) :
@@ -145,17 +145,17 @@ while(len(elevesRestant)!=0 and elevesRestantAvant!=elevesRestant) :
 
 
 print("___________2EME_TOUR______________")
-print("=====LD======")
+print("=====LD======"+str(len(optionsRemplis[0]))+" élèves")
 print(optionsRemplis[0])
-print("=====SE======")
+print("=====SE======"+str(len(optionsRemplis[1]))+" élèves")
 print(optionsRemplis[1])
-print("=====BIO======")
+print("=====BIO======"+str(len(optionsRemplis[2]))+" élèves")
 print(optionsRemplis[2])
-print("=====CSS======")
+print("=====CSS======"+str(len(optionsRemplis[3]))+" élèves")
 print(optionsRemplis[3])
-print("=====EOC======")
+print("=====EOC======"+str(len(optionsRemplis[4]))+" élèves")
 print(optionsRemplis[4])
-print("=====NRJ======")
+print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
 print(elevesRestant)
 
@@ -186,17 +186,17 @@ while(len(elevesRestant)!=0 and elevesRestantAvant!=elevesRestant) :
 
 
 print("___________3EME_TOUR______________")
-print("=====LD======")
+print("=====LD======"+str(len(optionsRemplis[0]))+" élèves")
 print(optionsRemplis[0])
-print("=====SE======")
+print("=====SE======"+str(len(optionsRemplis[1]))+" élèves")
 print(optionsRemplis[1])
-print("=====BIO======")
+print("=====BIO======"+str(len(optionsRemplis[2]))+" élèves")
 print(optionsRemplis[2])
-print("=====CSS======")
+print("=====CSS======"+str(len(optionsRemplis[3]))+" élèves")
 print(optionsRemplis[3])
-print("=====EOC======")
+print("=====EOC======"+str(len(optionsRemplis[4]))+" élèves")
 print(optionsRemplis[4])
-print("=====NRJ======")
+print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
 print("=====RESTANT======")
 print(elevesRestant)
