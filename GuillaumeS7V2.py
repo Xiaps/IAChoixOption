@@ -3,17 +3,17 @@ from pycsp3 import *
 # Les options
 options = LD, SE, BIO, CSS = 0, 1, 2, 3
 
-# Les places de optionss
+# Les places de options
 optionsPlaces = [4, 4, 2, 2]
 
 # Les eleves
 elevesV = VarArray(size=[8,4], dom={0, 1})
 
 # Var choix
-choixV = VarArray(size=8, dom=range(4))
+choixV = VarArray(size=len(elevesV), dom=range(4))
 
 #var moyenne
-moyenneV = VarArray(size=8, dom=range(20))
+moyenneV = VarArray(size=len(elevesV), dom=range(20))
 
 #score pour optimisation
 score = Var(dom=range(10000))
@@ -32,7 +32,7 @@ elevesMoyenneOptions = [[], [], [], [], [], [], [], []]
 
 #Calcul des moyennes coeficcientees pour chaque eleve
 for y in range(len(options)):
-    for i in range(8):
+    for i in range(len(elevesV)):
         moyenne = 0
         for x in range(len(elevesNotes[0])):
             moyenne += elevesNotes[i][x] * coefsOptions[y][x]
@@ -45,10 +45,10 @@ coefChoix = -5
 coefMoyenne = 1
 
 satisfy(
-    [Sum(elevesV[x][i] for x in range(8)) <= optionsPlaces[i] for i in range(len(options))],
-    [choixV[i]==Sum(elevesV[i]*elevesChoix[i]) for i in range(8)],
-    [Sum(elevesV[i])==1 for i in range(8)],
-    [moyenneV[i]==Sum(elevesV[i]*elevesMoyenneOptions[i]) for i in range(8)],
+    [Sum(elevesV[x][i] for x in range(len(elevesV))) <= optionsPlaces[i] for i in range(len(options))],
+    [choixV[i]==Sum(elevesV[i]*elevesChoix[i]) for i in range(len(elevesV))],
+    [Sum(elevesV[i])==1 for i in range(len(elevesV))],
+    [moyenneV[i]==Sum(elevesV[i]*elevesMoyenneOptions[i]) for i in range(len(elevesV))],
     score==(Sum(choixV))*coefChoix+Sum(moyenneV)*coefMoyenne
 )
 
