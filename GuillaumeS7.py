@@ -1,20 +1,25 @@
 from pycsp3 import *
-import numpy as np;
 
-#Les options
+# Les options
 options = LD, SE, BIO = 0, 1, 2
 
-#Les places de optionss
+# Les places de options
 optionsPlaces = [4, 4, 2]
 
-#Les eleves
-Guillaume, Maxime, Alban, Roger, Manu, Morgane, Vegeta, Clara = eleves = VarArray(size=8, dom=options)
+# Les eleves
+elevesV = VarArray(size=[8,3], dom={0, 1})
 
-varChoixObtenu = VarArray(size=8, dom=range(3))
+# Var choix
+choixV = VarArray(size=8, dom=range(3))
 
-#Set de choix pour chaque eleve
-elevesChoix = [[5, 1, 0], [5, 1, 2], [5, 1, 2], [5, 2, 0], [5, 2, 0], [5, 2, 1], [5, 0, 2], [5, 0, 2]]
-#La suite n'est pas encore utilise (jusqu'au satisfy)
+#var moyenne
+moyenneV = VarArray(size=8, dom=range(20))
+
+#score pour optimisation
+score = Var(dom=range(10000))
+
+# Set de choix pour chaque eleve, l'option 1ere est indiqué par 0,n la deuxieme par 1 etc etc...
+elevesChoix = [[2, 1, 0], [0, 1, 2], [0, 1, 2], [1, 2, 0], [1, 2, 0], [0, 2, 1], [1, 0, 2], [1, 0, 2]]
 
 #Set de notes pour chaque eleve
 elevesNotes = [[15, 15], [12, 18], [20, 4], [12, 13], [9, 8], [17, 18], [5, 19], [16, 11]]
@@ -27,25 +32,26 @@ elevesMoyenneOptions = [[], [], [], [], [], [], [], []]
 
 #Calcul des moyennes coeficcientees pour chaque eleve
 for y in range(len(options)):
-    for i in range(len(eleves)):
+    for i in range(8):
         moyenne = 0
         for x in range(len(elevesNotes[0])):
             moyenne += elevesNotes[i][x] * coefsOptions[y][x]
         moyenne = round(moyenne / sum(coefsOptions[y]), 2)
-        elevesMoyenneOptions[i].append(moyenne)
+        elevesMoyenneOptions[i].append(round(moyenne))
 
-#Conditions : (Commentaires hors du satisfy sinon erreur chez moi, raison inconnue)
-
-# Il ne peut pas y avoir plus d'eleves par option que de place disponible
-# Un eleve doit être attribue dans l'option de son 1er choix sauf si celle ci est pleine. (Donc soit il valide que son opption est son choix 1 soit que cette option est pleine.)
+#Le coef du choix doit etre negatif
+coefChoix = -5
+#Le coef du choix doit etre positif
+coefMoyenne = 1
 
 satisfy(
-    [Count(eleves, value=options[i]) <= optionsPlaces[i] for i in range(len(options))],
-    [varChoixObtenu[i]==elevesChoix[i].index(eleves[i]) for i in range(len(eleves))]
+    [Sum(elevesV[x][i] for x in range(8)) <= optionsPlaces[i] for i in range(len(options))],
+    [choixV[i]==Sum(elevesV[i]*elevesChoix[i]) for i in range(8)],
+    [Sum(elevesV[i])==1 for i in range(8)],
+    [moyenneV[i]==Sum(elevesV[i]*elevesMoyenneOptions[i]) for i in range(8)],
+    score==(Sum(choixV))*coefChoix+Sum(moyenneV)*coefMoyenne
 )
 
-minimize(
-    #Sum(elevesChoix[i].index(eleves[i]) for i in range(len(eleves)))
-
-    Sum(varChoixObtenu)
+maximize(
+    score
 )
