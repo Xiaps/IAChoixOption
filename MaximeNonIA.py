@@ -29,17 +29,17 @@ for i in range(nbEleves):
     choix=[3,3,3,3,3,3]
     for j in range(3):
         if (donnees[i][j+3]=="LD"):
-            choix[0] = j
+            choix[j] = 0
         if (donnees[i][j+3]=="SE"):
-            choix[1] = j
+            choix[j] = 1
         if (donnees[i][j + 3] == "BIO"):
-            choix[2] = j
+            choix[j] = 2
         if (donnees[i][j + 3] == "CSS"):
-            choix[3] = j
+            choix[j] = 3
         if (donnees[i][j + 3] == "EOC"):
-            choix[4] = j
+            choix[j] = 4
         if (donnees[i][j + 3] == "NRJ"):
-            choix[5] = j
+            choix[j] = 5
     elevesChoix.append(choix)
 
 #Ajout des choix des eleves random

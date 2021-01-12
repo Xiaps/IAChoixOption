@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 options =["LD","SE","BIO","CSS","EOC","NRJ"]
 
-data = pd.read_csv('testdata.csv', delimiter=";")
+data = pd.read_csv('testdata80.csv', delimiter=";")
 donnees=data.values
 
 nbEleve = len(donnees)

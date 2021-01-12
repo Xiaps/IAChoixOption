@@ -3,7 +3,7 @@ from random import randint
 import numpy as np;
 import pandas as pd;
 
-data = pd.read_csv('testdata.csv', delimiter=";")
+data = pd.read_csv('testdata120.csv', delimiter=";")
 donnees=data.values
 
 nbEleve = len(donnees)

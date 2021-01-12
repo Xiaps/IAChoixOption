@@ -1,7 +1,7 @@
 from pycsp3 import *
 import pandas as pd
 
-data = pd.read_csv('testdata.csv', delimiter=";")
+data = pd.read_csv('testdata80.csv', delimiter=";")
 donnees=data.values
 
 nbEleve = len(donnees)
