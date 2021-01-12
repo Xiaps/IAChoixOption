@@ -206,3 +206,24 @@ print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
 print("=====RESTANT======")
 print(elevesRestant)
+
+scoreMoyenne = 0
+scoreChoix = 0
+coefMoyenn = 1
+coefChoix = -5
+
+for i in range(len(optionsRemplis)):
+    for j in range(len(optionsRemplis[i])):
+        scoreMoyenne += optionsRemplis[i][j][1][i]
+
+
+for i in range(len(optionsRemplis)):
+    for j in range(len(optionsRemplis[i])):
+        scoreChoix += optionsRemplis[i][j][2].index(i)
+
+score=scoreChoix*coefChoix+scoreMoyenne*coefMoyenn
+
+print(scoreChoix)
+print(scoreMoyenne)
+print("¤¤¤ Score final : ¤¤¤")
+print(score)
