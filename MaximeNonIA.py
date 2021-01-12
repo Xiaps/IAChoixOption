@@ -26,7 +26,7 @@ for i in range(nbEleves):
 
 #Ajout des choix des eleves si String
 for i in range(nbEleves):
-    choix=[3,3,3,3,3,3]
+    choix=[0,0,0,0,0,0]
     for j in range(3):
         if (donnees[i][j+3]=="LD"):
             choix[j] = 0
