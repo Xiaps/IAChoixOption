@@ -52,7 +52,7 @@ for i in range(nbEleves):
 optionsPlaces = [50, 50, 50, 50, 50, 50]
 
 #Set de coefs des notes pour chaque option
-coefsOptions = [[2, 1], [1, 1], [1, 3], [1, 1], [1,1], [1,1]]
+coefsOptions = [[1, 2], [1, 2], [2, 1], [1, 2], [2,1], [2,1]]
 
 #Set de moyennes coeficientés par option pour chaque eleve
 elevesMoyenneOptions = []
