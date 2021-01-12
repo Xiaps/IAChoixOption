@@ -159,9 +159,11 @@ print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
 print(elevesRestant)
 
+elevesRestantAvant2 = []
+
 #Troisieme choix
-while(len(elevesRestant)!=0 and elevesRestantAvant!=elevesRestant) :
-    elevesRestantAvant = elevesRestant.copy()
+while(len(elevesRestant)!=0 and elevesRestantAvant2!=elevesRestant) :
+    elevesRestantAvant2 = elevesRestant.copy()
 
     for index in range(len(elevesRestantAvant)) :
         optionsRemplis[elevesRestantAvant[index][2][2]].append(elevesRestantAvant[index])
@@ -177,6 +179,10 @@ while(len(elevesRestant)!=0 and elevesRestantAvant!=elevesRestant) :
                 # échanger si l'élément trouvé est plus grand que le suivant
                 if optionsRemplis[op][j][1][op] < optionsRemplis[op][j + 1][1][op]:
                     optionsRemplis[op][j], optionsRemplis[op][j + 1] = optionsRemplis[op][j + 1], optionsRemplis[op][j]
+
+
+
+
 
     # On coupe :
     for i in range(len(optionsRemplis)):
