@@ -227,3 +227,24 @@ print(scoreChoix)
 print(scoreMoyenne)
 print("¤¤¤ Score final : ¤¤¤")
 print(score)
+
+resultat=[["Prenom"],["Option attribuee"],["Rang du choix"],["Moyenne dans l'option"]]
+optionsString =["LD","SE","BIO","CSS","EOC","NRJ"]
+choixString = ["Premier choix","Deuxieme choix","Troisieme choix"]
+
+
+
+for i in range(len(optionsRemplis)):
+    for j in range(len(optionsRemplis[i])):
+        resultat[0].append(optionsRemplis[i][j][0])
+        resultat[1].append(optionsString[i])
+
+        rangChoix= optionsRemplis[i][j][2].index(i)
+        resultat[2].append(choixString[rangChoix])
+
+
+        resultat[3].append(optionsRemplis[i][j][1][i])
+
+
+
+print(resultat)
