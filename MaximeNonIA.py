@@ -157,6 +157,7 @@ print("=====EOC======"+str(len(optionsRemplis[4]))+" élèves")
 print(optionsRemplis[4])
 print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
+print("=====RESTANT======")
 print(elevesRestant)
 
 elevesRestantAvant2 = []
@@ -206,6 +207,50 @@ print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
 print(optionsRemplis[5])
 print("=====RESTANT======")
 print(elevesRestant)
+
+
+#Troisieme choix
+while(len(elevesRestant)!=0 and elevesRestantAvant!=elevesRestant) :
+    elevesRestantAvant = elevesRestant.copy()
+
+    for index in range(len(elevesRestantAvant)) :
+        optionsRemplis[elevesRestantAvant[index][2][2]].append(elevesRestantAvant[index])
+        elevesRestant.remove(elevesRestantAvant[index])
+
+    # On classe dans l'ordre des moyennes par options :
+
+    for op in range(nbOptions):
+        n = len(optionsRemplis[op])
+        #    Traverser tous les éléments du tableau
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                # échanger si l'élément trouvé est plus grand que le suivant
+                if optionsRemplis[op][j][1][op] < optionsRemplis[op][j + 1][1][op]:
+                    optionsRemplis[op][j], optionsRemplis[op][j + 1] = optionsRemplis[op][j + 1], optionsRemplis[op][j]
+
+    # On coupe :
+    for i in range(len(optionsRemplis)):
+        while len(optionsRemplis[i]) > optionsPlaces[i]:
+            elevesRestant.append(optionsRemplis[i].pop())
+
+
+
+print("___________3EME_TOUR______________")
+print("=====LD======"+str(len(optionsRemplis[0]))+" élèves")
+print(optionsRemplis[0])
+print("=====SE======"+str(len(optionsRemplis[1]))+" élèves")
+print(optionsRemplis[1])
+print("=====BIO======"+str(len(optionsRemplis[2]))+" élèves")
+print(optionsRemplis[2])
+print("=====CSS======"+str(len(optionsRemplis[3]))+" élèves")
+print(optionsRemplis[3])
+print("=====EOC======"+str(len(optionsRemplis[4]))+" élèves")
+print(optionsRemplis[4])
+print("=====NRJ======"+str(len(optionsRemplis[5]))+" élèves")
+print(optionsRemplis[5])
+print("=====RESTANT======")
+print(elevesRestant)
+
 
 scoreMoyenne = 0
 scoreChoix = 0
