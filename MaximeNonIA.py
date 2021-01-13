@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 #Les options
 options = LD, SE, BIO, CSS, EOC, NRJ = 0, 1, 2, 3, 4, 5
@@ -290,6 +291,10 @@ for i in range(len(optionsRemplis)):
 
         resultat[3].append(optionsRemplis[i][j][1][i])
 
-
+resultat= np.array(resultat)
+resultat=np.transpose(resultat)
 
 print(resultat)
+
+df = pd.DataFrame(resultat)
+df.to_csv('choixEffectueNonIA.csv',index=False,header=False)

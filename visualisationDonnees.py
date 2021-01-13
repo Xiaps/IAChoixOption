@@ -60,7 +60,7 @@ for i in range(nombreOptions):
 print(resultat)
 
 df = pd.DataFrame(resultat)
-df.to_csv('choixEffectue.csv',index=False,header=False)
+df.to_csv('choixEffectueIA.csv',index=False,header=False)
 
 nbPremierChoix=0
 nbDeuxiemeChoix=0
